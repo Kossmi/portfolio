@@ -3,106 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <title>Portfolio - Daria</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-  <style>
 
-      .two-images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      height: 400px;
-    }
+<style>
 
-    .two-images img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+  /* GLOBAL STYLE */
+  body {
+    background: linear-gradient(135deg,#005f73 0%,#0a9396 35%,#9b5de5 100%);
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    color: #050505;
+  }
 
-    body {
-      background: linear-gradient(135deg, #005f73 0%, #9b5de5 45%, #ffca3a 100%);
-      padding: 0;
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      color: #050505; /* keep text dark for contrast on colorful bg */
-    }
+  h1, h2, h3 { font-weight: 700; letter-spacing: -0.5px; }
 
-    header {
-      text-align: center;
-      padding: 120px 20px 80px;
-      background: #ffffffaa;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #ddd;
-    }
+  a { text-decoration: none; }
 
-    h1 {
-      font-size: 64px;
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      color: #000000;
-      text-shadow: 0 0 8px rgba(255,255,255,0.6);
-    }
+  /* ----------- NAVBAR ----------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    padding: 12px 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
 
-    .subtitle {
-      font-size: 20px;
-      opacity: 0.7;
-      margin-top: 10px;
-    }
+  nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+  nav a {
+    font-weight: 600;
+    color: #000;
+    transition: 0.3s;
+  }
 
-    .projects-grid {
-      display: grid;
-      gap: 40px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      margin-top: 40px;
-    }
+  nav a:hover {
+    color: #9b5de5;
+    transform: scale(1.05);
+  }
 
-    .card {
-      padding: 24px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.18); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.3);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+  /* ----------- HEADER HERO ----------- */
+  header {
+    text-align: center;
+    padding: 140px 20px 80px;
+    background: #ffffff99;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #00000030;
+  }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
-    }
+  h1 { font-size: 64px; text-shadow: 0px 0px 8px rgba(255,255,255,0.8); }
 
-    footer {
-      text-align: center;
-      padding: 60px 20px;
-      opacity: 0.7;
-    }
+  .subtitle {
+    font-size: 22px;
+    margin-top: 12px;
+    opacity: 0.9;
+    font-weight: 500;
+  }
 
-    a {
-      text-decoration: none;
-    }
-  </style>
+  /* CTA BUTTON */
+  .cta-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    background: #ffca3a;
+    color: #000;
+    border-radius: 14px;
+    transition: 0.35s;
+  }
+
+  .cta-btn:hover {
+    background: #9b5de5;
+    color: #fff;
+    transform: scale(1.1);
+  }
+
+  /* ----------- IMAGE HERO ----------- */
+  .two-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .two-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s ease;
+  }
+
+  .two-images img:hover { transform: scale(1.10); }
+
+  /* ----------- MENU GRID ----------- */
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+  }
+
+  h2 { text-align: center; font-size: 34px; margin-bottom: 25px; }
+
+  .projects-grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    margin-top: 50px;
+  }
+
+  .card {
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.09);
+    transition: 0.35s;
+    animation: fadeUp 1s ease both;
+  }
+
+  .card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  footer {
+    text-align: center;
+    padding: 60px 20px;
+    opacity: .8;
+    margin-top: 50px;
+  }
+
+</style>
 </head>
+
 <body>
 
+<nav>
+  <ul>
+    <li><a href="omnie.html">O mnie</a></li>
+    <li><a href="edukacja.html">Edukacja</a></li>
+    <li><a href="certyfikaty.html">Certyfikaty</a></li>
+    <li><a href="projekty.html">Projekty</a></li>
+    <li><a href="doswiadczeniezawodowe.html">Doświadczenie</a></li>
+  </ul>
+</nav>
+
 <header>
-  <h1>Hej, jestem Daria</h1>
-  <div class="subtitle">Witam w moim portfolio!</div>
+  <h1>Hej, jestem Daria 👋</h1>
+  <div class="subtitle">Portfolio Data & Analytics | Projekty | Certyfikaty</div>
+  <a href="projekty.html" class="cta-btn">Zobacz moje projekty</a>
 </header>
 
 <div class="two-images">
-
-<img src="assets/image11.png" alt="">
-     
-
-<img src="assets/image22.png" alt="">
-
+  <img src="assets/image11.png">
+  <img src="assets/image22.png">
 </div>
 
 <div class="container">
@@ -110,30 +181,25 @@
 
   <div class="projects-grid">
     <a href="omnie.html" class="card">
-      <h3>O mnie</h3>
-      <p>Poznajmy się!</p>
+      <h3>O mnie</h3><p>Poznajmy się!</p>
     </a>
     <a href="edukacja.html" class="card">
-      <h3>Edukacja</h3>
-      <p>Moja ścieżka rozwoju.</p>
+      <h3>Edukacja</h3><p>Moja ścieżka rozwoju.</p>
     </a>
     <a href="certyfikaty.html" class="card">
-      <h3>Certyfikaty</h3>
-      <p>Co udało mi się zdobyć?</p>
+      <h3>Certyfikaty</h3><p>Zdobytą wiedzę mam udokumentowaną.</p>
     </a>
     <a href="projekty.html" class="card">
-      <h3>Projekty</h3>
-      <p>Mix projektów analitycznych z różnych technologii.</p>
+      <h3>Projekty</h3><p>Analiza danych, dashboardy, ML i więcej.</p>
     </a>
     <a href="doswiadczeniezawodowe.html" class="card">
-      <h3>Doświadczenie zawodowe</h3>
-      <p>Czyli gdzie się realizuję.</p>
+      <h3>Doświadczenie zawodowe</h3><p>Gdzie zdobywałam praktykę?</p>
     </a>
   </div>
 </div>
 
 <footer>
-  <p>Skontaktuj się: <a href="mailto:email@example.com">d.kosmicka24@gmail.com</a></p>
+  <p>📩 Kontakt: <a href="mailto:d.kosmicka24@gmail.com">d.kosmicka24@gmail.com</a></p>
 </footer>
 
 </body>
