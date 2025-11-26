@@ -12,7 +12,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       width: 100%;
-      height: 450px; /* możesz zmienić np. na 380–500px */
+      height: 550px; /* zwiększona wysokość – teraz faktycznie widoczny środek */
       overflow: hidden;
     }
 
@@ -20,7 +20,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center; /* kluczowy element — kadrowanie na środek */
+      object-position: center center; /* ŚRODEK zdjęcia, nie góra */
       display: block;
     }
 
