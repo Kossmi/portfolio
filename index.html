@@ -1,124 +1,81 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Twoje Imię</title>
 
-  <style>
-    /* ------ SEKCJA ZDJĘĆ ------ */
-      .two-images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      height: 1000px; /* możesz zmienić na 450/550 zależnie jak bardzo środek ma być widoczny */
-      overflow: hidden;
-    }
-
-    .two-images img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 65%; /* KLUCZOWA ZMIANA — środek zdjęcia widoczny */
-    }
-
-    /* ------ STRONA ------ */
+<style>
     body {
-      background: linear-gradient(135deg, #005f73 0%, #9b5de5 45%, #ffca3a 100%);
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      color: #050505;
-    }
-
-    header {
-      text-align: center;
-      padding: 120px 20px 80px;
-      background: #ffffffaa;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #000000;
-    }
-
-    h1 {
-      font-size: 64px;
-      font-weight: 700;
-      color: #000000;
-      text-shadow: 0 0 8px rgba(255,255,255,0.6);
-      margin: 0;
-    }
-
-    .subtitle {
-      font-size: 20px;
-      opacity: 0.85;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        font-family: "Inter", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #111;
     }
 
     .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+        text-align: center;
+        animation: fadeIn 1.5s ease;
     }
 
-    /* ------ MENU / KARTY ------ */
-    .projects-grid {
-      display: grid;
-      gap: 40px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      margin-top: 40px;
+    h1 {
+        font-size: 36px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
     }
 
-    .card {
-      padding: 24px;
-      border-radius: 18px;
-      color: #fff; /* tekst teraz biały = czytelny */
-      text-shadow: 0 0 8px rgba(0,0,0,0.4);
-      background: rgba(0,0,0,0.35);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      transition: transform .25s, box-shadow .25s, background .25s;
+    .images {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        align-items: center;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.35);
-      background: rgba(0,0,0,0.5);
+    .images img {
+        width: 330px;
+        max-width: 45vw;
+        border-radius: 12px;
+        transition: transform .4s ease, opacity .4s;
+    }
+
+    .images img:hover {
+        transform: scale(1.04);
+        opacity: 0.9;
     }
 
     footer {
-      text-align: center;
-      padding: 60px 20px;
-      opacity: 0.85;
+        position: absolute;
+        bottom: 20px;
+        font-size: 14px;
+        opacity: 0.6;
     }
 
-    a { text-decoration: none; }
-  </style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>Hej, jestem Daria</h1>
-  <div class="subtitle">Witam w moim portfolio!</div>
-</header>
-
-<div class="two-images">
-  <img src="assets/image11.png" alt="">
-  <img src="assets/image22.png" alt="">
-</div>
-
 <div class="container">
-  <h2>Menu</h2>
+    <h1>Moje Portfolio</h1>
 
-  <div class="projects-grid">
-    <a href="omnie.html" class="card"><h3>O mnie</h3><p>Poznajmy się!</p></a>
-    <a href="edukacja.html" class="card"><h3>Edukacja</h3><p>Moja ścieżka rozwoju.</p></a>
-    <a href="certyfikaty.html" class="card"><h3>Certyfikaty</h3><p>Co udało mi się zdobyć?</p></a>
-    <a href="projekty.html" class="card"><h3>Projekty</h3><p>Mix projektów analitycznych z różnych technologii.</p></a>
-    <a href="doswiadczeniezawodowe.html" class="card"><h3>Doświadczenie zawodowe</h3><p>Czyli gdzie się realizuję.</p></a>
-  </div>
+    <!-- Wstaw swoje obrazy do folderu /img/ -->
+    <div class="images">
+        <img src="img/image11.jpg" alt="image11">
+        <img src="img/image22.jpg" alt="image22">
+    </div>
 </div>
 
-<footer>
-  <p>Skontaktuj się: <a href="mailto:d.kosmicka24@gmail.com">d.kosmicka24@gmail.com</a></p>
-</footer>
+<footer>© 2025 Twoje Imię • Portfolio</footer>
 
 </body>
 </html>
