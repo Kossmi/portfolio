@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wykształcenie</title>
+
+<style>
+/* ===== MOTYW LIGHT / DARK ===== */
+:root{
+    --bg:#ffffff;
+    --txt:#111;
+    --sub:#666;
+    --line:#dcdcdc;
+    --card:#f7f7f7;
+}
+body.dark{
+    --bg:#0c0c0c;
+    --txt:#e4e4e4;
+    --sub:#aaa;
+    --line:#333;
+    --card:#151515;
+}
+body{
+    margin:0;background:var(--bg);color:var(--txt);
+    font-family:"Inter",sans-serif;transition:.35s;
+}
+
+/* ===== NAV ===== */
+nav{text-align:center;padding:30px 0;font-size:15px;letter-spacing:.5px;}
+nav a{
+    margin:0 15px;text-decoration:none;color:var(--txt);
+    opacity:.6;transition:.3s;
+}
+nav a:hover{opacity:1;}
+
+/* ===== TOGGLE DARK ===== */
+.toggle{
+    position:fixed;top:25px;right:25px;
+    background:none;border:1px solid var(--txt);
+    padding:6px 14px;border-radius:20px;
+    cursor:pointer;font-size:14px;opacity:.75;transition:.3s;
+}
+.toggle:hover{opacity:1;transform:scale(1.05);}
+
+/* ===== SEKCJA WYKSZTAŁCENIE ===== */
+main{
+    max-width:1000px;margin:40px auto;padding:0 25px;text-align:center;
+    animation:fade .7s ease;
+}
+h1{
+    font-size:42px;font-weight:300;letter-spacing:2px;
+    margin-bottom:60px;animation:float 3s infinite alternate ease-in-out;
+}
+
+/* ===== TIMELINE – top UI 🔥 ===== */
+.timeline{
+    position:relative;margin-top:40px;padding-left:30px;
+}
+.timeline:before{
+    content:"";position:absolute;left:20px;top:0;bottom:0;
+    width:3px;background:var(--line);border-radius:10px;
+}
+
+/* ===== ELEMENTY EDUKACJI ===== */
+.item{
+    position:relative;margin:50px 0;
+    background:var(--card);padding:28px 30px;border-radius:16px;
+    text-align:left;
+    opacity:0;transform:translateY(20px);
+    animation:slideUp .8s forwards;
+}
+.item:nth-child(2){animation-delay:.1s;}
+.item:nth-child(3){animation-delay:.25s;}
+.item:nth-child(4){animation-delay:.4s;}
+
+.item:before{
+    content:"";position:absolute;left:-14px;top:25px;
+    width:14px;height:14px;background:var(--txt);
+    border-radius:50%;box-shadow:0 0 12px rgba(0,0,0,.25);
+}
+
+/* TEKSTY W TIMELINE */
+.item h3{
+    margin:0;margin-bottom:6px;font-size:22px;font-weight:400;
+}
+.item span{
+    font-size:14px;opacity:.7;color:var(--sub);
+}
+.item p{
+    margin-top:12px;line-height:1.7;font-size:16px;color:var(--sub);
+}
+
+/* ANIMACJE */
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{to{opacity:1;transform:translateY(0);}}
+@keyframes float{from{transform:translateY(0);}to{transform:translateY(-10px);}}
+
+/* STOPKA */
+footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
+</style>
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
+
+<nav>
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="o-mnie.html">O MNIE</a>
+    <a href="wyksztalcenie.html" style="opacity:1;">WYKSZTAŁCENIE</a>
+    <a href="certyfikaty.html">CERTYFIKATY</a>
+    <a href="projekty.html">PROJEKTY</a>
+</nav>
+
+<main>
+    <h1>Wykształcenie</h1>
+
+    <div class="timeline">
+
+        <div class="item">
+            <h3>🎓 Studia Magisterskie – Informatyka</h3>
+            <span>Politechnika • 2021 – 2023</span>
+            <p>Specjalizacja X. Projekty, prace naukowe, badania, wyjazdy, doświadczenia.</p>
+        </div>
+
+        <div class="item">
+            <h3>🎓 Studia Inżynierskie – Informatyka</h3>
+            <span>Politechnika • 2018 – 2021</span>
+            <p>Zaawansowane technologie, inżynieria oprogramowania, praktyki zawodowe.</p>
+        </div>
+
+        <div class="item">
+            <h3>🏫 Technikum / Liceum</h3>
+            <span>2014 – 2018</span>
+            <p>Kierunek techniczny / informatyczny / matematyczno–fizyczny.</p>
+        </div>
+
+        <div class="item">
+            <h3>📌 Kursy & szkolenia dodatkowe</h3>
+            <span>Online / Stacjonarnie</span>
+            <p>Możesz dopisać: WebDev, Python, Cybersecurity, AI, UX, Cloud...</p>
+        </div>
+
+    </div>
+</main>
+
+<footer>© 2025 Twoje Imię</footer>
+
+<script>
+const body=document.body;
+if(localStorage.getItem("theme")==="dark") body.classList.add("dark");
+function toggleTheme(){
+    body.classList.toggle("dark");
+    localStorage.setItem("theme",body.classList.contains("dark")?"dark":"light");
+}
+</script>
+
+</body>
+</html>
