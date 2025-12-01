@@ -6,19 +6,81 @@
 <title>Portfolio | Strona Główna</title>
 
 <style>
-    body { margin:0;background:#fff;font-family:Inter, sans-serif;color:#111;text-align:center;}
-    nav { padding:25px;font-size:16px;letter-spacing:1px;}
-    nav a { margin:0 15px;text-decoration:none;color:#111;opacity:0.7;transition:.3s;}
+    :root {
+        --bg: #ffffff;
+        --txt: #111;
+        --subtxt: #555;
+    }
+    body.dark {
+        --bg: #0f0f0f;
+        --txt: #eaeaea;
+        --subtxt: #bfbfbf;
+    }
+
+    * { transition: background .4s, color .4s, opacity .4s, transform .4s; }
+    body {
+        margin:0; font-family: "Inter", sans-serif;
+        background: var(--bg); color: var(--txt);
+    }
+    nav {
+        padding:25px; font-size:16px; text-align:center;
+    }
+    nav a {
+        margin:0 15px; text-decoration:none; opacity:.7;
+        color:var(--txt); transition:.3s;
+    }
     nav a:hover { opacity:1; }
-    h1 { font-weight:300;margin:40px 0;font-size:34px;letter-spacing:2px;}
-    .images {display:flex;justify-content:center;gap:40px;margin-top:40px;}
-    .images img {width:330px;max-width:48vw;border-radius:12px;transition:.4s;}
-    .images img:hover {transform:scale(1.03);opacity:0.9;}
-    footer{opacity:0.6;font-size:14px;margin-top:60px;margin-bottom:20px;}
+
+    /* PRZEŁĄCZNIK TRYBU CIEMNEGO */
+    .toggle {
+        position:fixed; top:25px; right:25px; cursor:pointer;
+        font-size:15px; background:none; border:1px solid var(--txt);
+        padding:6px 12px; border-radius:20px; opacity:.8;
+    }
+    .toggle:hover{opacity:1;}
+
+    /* ANIMOWANA STRONA POWITALNA */
+    .hero {
+        height:85vh; display:flex; flex-direction:column;
+        justify-content:center; text-align:center;
+        animation: fadeIn 1.8s ease;
+    }
+
+    h1 {
+        font-size:46px; font-weight:300; letter-spacing:2px;
+        animation:titleFloat 3.5s infinite ease-in-out alternate;
+    }
+    .subtitle {
+        margin-top:10px; font-size:18px; color:var(--subtxt);
+        opacity:0; animation: fadeUp 1.8s .6s forwards;
+    }
+
+    .images {
+        display:flex; justify-content:center; gap:40px; margin-top:50px;
+        opacity:0; animation: fadeUp 1.8s 1.2s forwards;
+    }
+    .images img {
+        width:330px; max-width:48vw; border-radius:14px;
+    }
+    .images img:hover {
+        transform:rotate(1.3deg) scale(1.05);
+        opacity:.92;
+    }
+
+    footer { text-align:center; opacity:.5; font-size:14px; margin:60px 0; }
+
+    /* ANIMACJE */
+    @keyframes fadeIn  { from{opacity:0;} to{opacity:1;} }
+    @keyframes fadeUp  { from{opacity:0; transform:translateY(15px);}
+                         to{opacity:1; transform:translateY(0);} }
+    @keyframes titleFloat { from{transform:translateY(0);} to{transform:translateY(-10px);} }
+
 </style>
 </head>
 
 <body>
+
+<button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
 
 <nav>
     <a href="index.html">STRONA GŁÓWNA</a>
@@ -28,14 +90,27 @@
     <a href="projekty.html">PROJEKTY</a>
 </nav>
 
-<h1>Hej, jestem Daria!</h1>
+<section class="hero">
+    <h1>Cześć! Jestem <b>Daria</b></h1>
+    <p class="subtitle">Jestem farmaceutką, która stawia pierwsze kroki w programowaniu.</p>
 
-<div class="images">
-    <img src="assets/image11.png" alt="image11">
-    <img src="assets/image22.png" alt="image22">
-</div>
+    <div class="images">
+        <img src="assets/image11.png" alt="1">
+        <img src="assets/image22.png" alt="2">
+    </div>
+</section>
 
 <footer>© 2025 Daria</footer>
+
+<script>
+    const body = document.body;
+    if(localStorage.getItem("theme")==="dark"){ body.classList.add("dark"); }
+
+    function toggleTheme(){
+        body.classList.toggle("dark");
+        localStorage.setItem("theme", body.classList.contains("dark") ? "dark" : "light");
+    }
+</script>
 
 </body>
 </html>
