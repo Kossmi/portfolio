@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moje Projekty | Portfolio</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+        background: #0c0c0e;
+        color: #fff;
+        overflow-x: hidden;
+    }
+
+    header {
+        text-align: center;
+        padding: 70px 20px 20px;
+        letter-spacing: 2px;
+        font-size: 45px;
+        font-weight: 300;
+        opacity: 0;
+        animation: fadeDown 1.3s ease forwards;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        gap: 40px;
+        padding: 50px 8%;
+        animation: fadeIn 1.5s ease forwards;
+        opacity: 0;
+    }
+
+    .project {
+        background: rgba(255,255,255,0.04);
+        border-radius: 22px;
+        padding: 22px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(0,0,0,0.55);
+        transition: .45s ease;
+        transform: translateY(10px);
+    }
+
+    .project:hover {
+        transform: translateY(-6px);
+        background: rgba(255,255,255,0.08);
+        box-shadow: 0 0 35px rgba(150,120,255,0.4);
+    }
+
+    .project img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin-bottom: 18px;
+        transition: .4s;
+    }
+    .project img:hover { transform: scale(1.03); }
+
+    h2 {
+        font-size: 25px;
+        margin: 0 0 10px;
+        font-weight: 300;
+    }
+
+    p { opacity: .85; line-height: 1.6; font-size: 15px; }
+
+    .tags {
+        margin: 18px 0 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tags span {
+        background: rgba(255,255,255,0.15);
+        padding: 6px 14px;
+        font-size: 13px;
+        border-radius: 50px;
+        letter-spacing: .5px;
+    }
+
+    .btn {
+        display: inline-block;
+        text-decoration: none;
+        color: black;
+        background: #fff;
+        padding: 10px 22px;
+        font-size: 14px;
+        border-radius: 40px;
+        margin-top: 12px;
+        transition: .35s;
+    }
+    .btn:hover { background:#dcdcdc; transform: translateY(-3px); }
+
+    .back {
+        position: fixed;
+        top: 22px;
+        left: 22px;
+        font-size: 15px;
+        opacity: .75;
+        text-decoration: none;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.4);
+        padding: 8px 14px;
+        border-radius: 8px;
+        transition: 0.35s;
+    }
+    .back:hover { opacity: 1; background:white; color:#000;}
+
+    @keyframes fadeDown { from {opacity:0;transform:translateY(-10px);} to {opacity:1;transform:translateY(0);} }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back">← Strona główna</a>
+
+<header>MOJE PROJEKTY</header>
+
+
+<!--═══════════════  GRID PROJEKTÓW  ═══════════════-->
+<div class="grid">
+
+    <!-- Projekt 1 -->
+    <div class="project">
+        <img src="img/projekt1.jpg" alt="Projekt 1">
+        <h2>Nazwa Projektu 1</h2>
+        <p>Krótki opis projektu. Czym jest, co rozwiązuje, co tworzy, dlaczego jest wyjątkowy.
+           Świetne miejsce na opis Twojej pracy i efektów. ✦</p>
+
+        <div class="tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <a href="#" class="btn">Zobacz projekt</a>
+    </div>
+
+    <!-- Projekt 2 -->
+    <div class="project">
+        <img src="img/projekt2.jpg" alt="Projekt 2">
+        <h2>Nazwa Projektu 2</h2>
+        <p>Opis kolejnego projektu. Możesz dodać link do GitHuba, demo live albo video prezentacji.</p>
+
+        <div class="tags">
+            <span>Python</span><span>API</span>
+        </div>
+        <a href="#" class="btn">Otwórz</a>
+    </div>
+
+    <!-- Projekt 3 -->
+    <div class="project">
+        <img src="img/projekt3.jpg" alt="Projekt 3">
+        <h2>Nazwa Projektu 3</h2>
+        <p>Możesz mieć tu dowolnie dużo pozycji — dodawaj kolejne bloki .project.</p>
+
+        <div class="tags">
+            <span>React</span><span>Firebase</span>
+        </div>
+        <a href="#" class="btn">Więcej</a>
+    </div>
+
+</div>
+<!--══════════════════════════════════════════════════-->
+
+
+</body>
+</html>
