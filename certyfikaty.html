@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certyfikaty</title>
+
+<style>
+/* ==== Motyw jasny & ciemny ==== */
+:root {
+    --bg:#ffffff;
+    --txt:#111;
+    --sub:#555;
+    --card:#f4f4f4;
+    --glow:#d1d1d1;
+}
+body.dark {
+    --bg:#0d0d0d;
+    --txt:#eaeaea;
+    --sub:#bfbfbf;
+    --card:#151515;
+    --glow:#333;
+}
+body{
+    margin:0;background:var(--bg);color:var(--txt);
+    font-family: "Inter",sans-serif;transition:.35s;
+}
+
+/* ==== NAV ==== */
+nav{
+    text-align:center;padding:30px 0;
+    letter-spacing:1px;font-size:15px;
+}
+nav a{
+    margin:0 15px;text-decoration:none;color:var(--txt);
+    opacity:.6;transition:.3s;
+}
+nav a:hover{opacity:1;}
+
+/* ==== Przycisk trybu ciemnego ==== */
+.toggle{
+    position:fixed;top:25px;right:25px;cursor:pointer;
+    background:none;border:1px solid var(--txt);padding:6px 14px;
+    font-size:14px;border-radius:20px;opacity:.75;transition:.3s;
+}
+.toggle:hover{opacity:1;transform:scale(1.05);}
+
+/* ==== Sekcja certyfikatów ==== */
+main{
+    max-width:1000px;margin:40px auto;padding:0 25px;text-align:center;
+    animation:fade .7s ease;
+}
+h1{
+    font-size:42px;font-weight:300;letter-spacing:2px;
+    margin-bottom:45px;animation:float 3s infinite alternate ease-in-out;
+}
+
+/* Karty certyfikatów */
+.grid{
+    display:grid;gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    margin-top:40px;
+}
+
+/* Najważniejsze: NOWOCZESNY DESIGN kart */
+.card{
+    background:var(--card);border-radius:16px;padding:28px;
+    box-shadow:0 0 0 rgba(0,0,0,0);
+    transition:.45s;cursor:pointer;
+    opacity:0;transform:translateY(25px);
+    animation:slideUp .9s ease forwards;
+}
+.card:nth-child(2){animation-delay:.15s;}
+.card:nth-child(3){animation-delay:.3s;}
+.card:nth-child(4){animation-delay:.45s;}
+
+.card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+    border:1px solid var(--glow);
+}
+
+/* Nazwy certyfikatów */
+.card h3{
+    margin:0;font-weight:400;font-size:22px;margin-bottom:12px;
+}
+.card p{
+    font-size:15px;color:var(--sub);line-height:1.6;
+}
+
+/* Animacje */
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{to{opacity:1;transform:translateY(0);}}
+@keyframes float{from{transform:translateY(0);}to{transform:translateY(-10px);}}
+
+footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
+
+</style>
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
+
+<nav>
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="o-mnie.html">O MNIE</a>
+    <a href="wyksztalcenie.html">WYKSZTAŁCENIE</a>
+    <a href="certyfikaty.html" style="opacity:1;">CERTYFIKATY</a>
+    <a href="projekty.html">PROJEKTY</a>
+</nav>
+
+<main>
+    <h1>Certyfikaty & Osiągnięcia</h1>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>🏅 Certyfikat 1</h3>
+            <p>Nazwa instytucji / rok zdobycia / dziedzina.</p>
+        </div>
+
+        <div class="card">
+            <h3>🏆 Certyfikat 2</h3>
+            <p>Krótka informacja o zakresie umiejętności & poziomie.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎓 Certyfikat 3</h3>
+            <p>Technologie, narzędzia i inne potwierdzone kompetencje.</p>
+        </div>
+
+        <div class="card">
+            <h3>📜 Certyfikat 4</h3>
+            <p>Możesz dodać link do PDF lub strony z weryfikacją.</p>
+        </div>
+
+    </div>
+</main>
+
+<footer>© 2025 Twoje Imię</footer>
+
+<script>
+const body=document.body;
+if(localStorage.getItem("theme")==="dark")body.classList.add("dark");
+function toggleTheme(){
+    body.classList.toggle("dark");
+    localStorage.setItem("theme", body.classList.contains("dark")?"dark":"light");
+}
+</script>
+
+</body>
+</html>
