@@ -3,79 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio | Twoje Imię</title>
+<title>Portfolio | Strona Główna</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: #ffffff;
-        font-family: "Inter", sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        color: #111;
-    }
-
-    .container {
-        text-align: center;
-        animation: fadeIn 1.5s ease;
-    }
-
-    h1 {
-        font-size: 36px;
-        font-weight: 300;
-        letter-spacing: 2px;
-        margin-bottom: 25px;
-    }
-
-    .images {
-        display: flex;
-        gap: 40px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .images img {
-        width: 330px;
-        max-width: 45vw;
-        border-radius: 12px;
-        transition: transform .4s ease, opacity .4s;
-    }
-
-    .images img:hover {
-        transform: scale(1.04);
-        opacity: 0.9;
-    }
-
-    footer {
-        position: absolute;
-        bottom: 20px;
-        font-size: 14px;
-        opacity: 0.6;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(12px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
+    body { margin:0;background:#fff;font-family:Inter, sans-serif;color:#111;text-align:center;}
+    nav { padding:25px;font-size:16px;letter-spacing:1px;}
+    nav a { margin:0 15px;text-decoration:none;color:#111;opacity:0.7;transition:.3s;}
+    nav a:hover { opacity:1; }
+    h1 { font-weight:300;margin:40px 0;font-size:34px;letter-spacing:2px;}
+    .images {display:flex;justify-content:center;gap:40px;margin-top:40px;}
+    .images img {width:330px;max-width:48vw;border-radius:12px;transition:.4s;}
+    .images img:hover {transform:scale(1.03);opacity:0.9;}
+    footer{opacity:0.6;font-size:14px;margin-top:60px;margin-bottom:20px;}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Moje Portfolio</h1>
+<nav>
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="o-mnie.html">O MNIE</a>
+    <a href="wyksztalcenie.html">WYKSZTAŁCENIE</a>
+    <a href="certyfikaty.html">CERTYFIKATY</a>
+    <a href="projekty.html">PROJEKTY</a>
+</nav>
 
-    <!-- Wstaw swoje obrazy do folderu /img/ -->
-    <div class="images">
-        <img src="img/image11.jpg" alt="image11">
-        <img src="img/image22.jpg" alt="image22">
-    </div>
+<h1>Moje Portfolio</h1>
+
+<div class="images">
+    <img src="img/image11.jpg" alt="image11">
+    <img src="img/image22.jpg" alt="image22">
 </div>
 
-<footer>© 2025 Twoje Imię • Portfolio</footer>
+<footer>© 2025 Twoje Imię</footer>
 
 </body>
 </html>
