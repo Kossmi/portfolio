@@ -6,13 +6,13 @@
 <title>Certyfikaty</title>
 
 <style>
-/* ==== Motyw jasny & ciemny ==== */
 :root {
     --bg:#ffffff;
     --txt:#111;
     --sub:#555;
     --card:#f4f4f4;
     --glow:#d1d1d1;
+    --tag:#eaeaea;
 }
 body.dark {
     --bg:#0d0d0d;
@@ -20,13 +20,14 @@ body.dark {
     --sub:#bfbfbf;
     --card:#151515;
     --glow:#333;
+    --tag:#222;
 }
 body{
     margin:0;background:var(--bg);color:var(--txt);
-    font-family: "Inter",sans-serif;transition:.35s;
+    font-family:"Inter",sans-serif;transition:.35s;
 }
 
-/* ==== NAV ==== */
+/* NAV */
 nav{
     text-align:center;padding:30px 0;
     letter-spacing:1px;font-size:15px;
@@ -37,42 +38,41 @@ nav a{
 }
 nav a:hover{opacity:1;}
 
-/* ==== Przycisk trybu ciemnego ==== */
+/* Toggle */
 .toggle{
     position:fixed;top:25px;right:25px;cursor:pointer;
-    background:none;border:1px solid var(--txt);padding:6px 14px;
-    font-size:14px;border-radius:20px;opacity:.75;transition:.3s;
+    background:none;border:1px solid var(--txt);
+    padding:6px 14px;font-size:14px;border-radius:20px;
+    opacity:.75;transition:.3s;
 }
 .toggle:hover{opacity:1;transform:scale(1.05);}
 
-/* ==== Sekcja certyfikatów ==== */
+/* MAIN */
 main{
-    max-width:1000px;margin:40px auto;padding:0 25px;text-align:center;
+    max-width:1000px;margin:40px auto;
+    padding:0 25px;text-align:center;
     animation:fade .7s ease;
 }
 h1{
-    font-size:42px;font-weight:300;letter-spacing:2px;
-    margin-bottom:45px;animation:float 3s infinite alternate ease-in-out;
+    font-size:42px;font-weight:300;
+    letter-spacing:2px;margin-bottom:45px;
+    animation:float 3s infinite alternate ease-in-out;
 }
 
-/* Karty certyfikatów */
 .grid{
     display:grid;gap:30px;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    margin-top:40px;
 }
 
-/* Najważniejsze: NOWOCZESNY DESIGN kart */
 .card{
-    background:var(--card);border-radius:16px;padding:28px;
-    box-shadow:0 0 0 rgba(0,0,0,0);
+    background:var(--card);
+    border-radius:16px;padding:28px;
     transition:.45s;cursor:pointer;
     opacity:0;transform:translateY(25px);
     animation:slideUp .9s ease forwards;
 }
 .card:nth-child(2){animation-delay:.15s;}
 .card:nth-child(3){animation-delay:.3s;}
-.card:nth-child(4){animation-delay:.45s;}
 
 .card:hover{
     transform:translateY(-8px) scale(1.03);
@@ -80,21 +80,77 @@ h1{
     border:1px solid var(--glow);
 }
 
-/* Nazwy certyfikatów */
 .card h3{
-    margin:0;font-weight:400;font-size:22px;margin-bottom:12px;
+    margin:0;font-weight:400;font-size:22px;
 }
 .card p{
-    font-size:15px;color:var(--sub);line-height:1.6;
+    font-size:15px;color:var(--sub);
+    margin-top:10px;
 }
+
+/* TAGI */
+.tags{
+    margin-top:15px;
+}
+.tag{
+    display:inline-block;
+    background:var(--tag);
+    padding:5px 12px;
+    border-radius:14px;
+    font-size:12px;
+    margin:4px;
+    opacity:.85;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,.7);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+.modal-content{
+    background:var(--bg);
+    color:var(--txt);
+    max-width:650px;
+    width:90%;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    position:relative;
+    animation:fade .3s ease;
+}
+.modal-content img{
+    max-width:100%;
+    border-radius:12px;
+    margin:20px 0;
+}
+.modal a{
+    display:inline-block;
+    margin-top:15px;
+    text-decoration:none;
+    color:var(--txt);
+    border-bottom:1px solid var(--txt);
+    opacity:.7;
+}
+.modal a:hover{opacity:1;}
+.close{
+    position:absolute;
+    top:18px;right:25px;
+    font-size:26px;cursor:pointer;
+    opacity:.6;
+}
+.close:hover{opacity:1;}
 
 /* Animacje */
 @keyframes fade{from{opacity:0;}to{opacity:1;}}
 @keyframes slideUp{to{opacity:1;transform:translateY(0);}}
 @keyframes float{from{transform:translateY(0);}to{transform:translateY(-10px);}}
 
+/* Footer */
 footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
-
 </style>
 </head>
 
@@ -111,42 +167,81 @@ footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
 </nav>
 
 <main>
-    <h1>Certyfikaty & Osiągnięcia</h1>
+<h1>Certyfikaty & Osiągnięcia</h1>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
-            <h3>🏅 Certyfikat 1</h3>
-            <p>Nazwa instytucji / rok zdobycia / dziedzina.</p>
-        </div>
-
-        <div class="card">
-            <h3>🏆 Certyfikat 2</h3>
-            <p>Krótka informacja o zakresie umiejętności & poziomie.</p>
-        </div>
-
-        <div class="card">
-            <h3>🎓 Certyfikat 3</h3>
-            <p>Technologie, narzędzia i inne potwierdzone kompetencje.</p>
-        </div>
-
-        <div class="card">
-            <h3>📜 Certyfikat 4</h3>
-            <p>Możesz dodać link do PDF lub strony z weryfikacją.</p>
-        </div>
-
+<div class="card"
+data-title="Data Analytics Certificate"
+data-date="March 2024"
+data-desc="Certificate confirming skills in SQL querying, Python basics, data analysis and data warehouse concepts."
+data-img="img/certificate_sample.jpg"
+data-link="https://www.coursera.org/verify/ABC123">
+    <h3>🎓 Data Analytics Certificate</h3>
+    <p>Coursera · 2024</p>
+    <div class="tags">
+        <span class="tag">SQL</span>
+        <span class="tag">PYTHON</span>
     </div>
+</div>
+
+<div class="card"
+data-title="SQL for Data Analysis"
+data-date="January 2024"
+data-desc="Advanced SQL queries, joins, CTEs and analytical functions for business reporting."
+data-img="img/sql_certificate.jpg"
+data-link="https://www.udemy.com/certificate/XYZ456">
+    <h3>🏅 SQL for Data Analysis</h3>
+    <p>Udemy · 2024</p>
+    <div class="tags">
+        <span class="tag">SQL</span>
+    </div>
+</div>
+
+</div>
 </main>
 
-<footer>© 2025 Twoje Imię</footer>
+<footer>© 2025 Daria</footer>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+<div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modal-title"></h2>
+    <p id="modal-date"></p>
+    <img id="modal-img">
+    <p id="modal-desc"></p>
+    <a id="modal-link" target="_blank">Verify certificate ↗</a>
+</div>
+</div>
 
 <script>
 const body=document.body;
 if(localStorage.getItem("theme")==="dark")body.classList.add("dark");
 function toggleTheme(){
     body.classList.toggle("dark");
-    localStorage.setItem("theme", body.classList.contains("dark")?"dark":"light");
+    localStorage.setItem("theme",body.classList.contains("dark")?"dark":"light");
 }
+
+const modal=document.getElementById("modal");
+const title=document.getElementById("modal-title");
+const date=document.getElementById("modal-date");
+const desc=document.getElementById("modal-desc");
+const img=document.getElementById("modal-img");
+const link=document.getElementById("modal-link");
+
+document.querySelectorAll(".card").forEach(card=>{
+    card.addEventListener("click",()=>{
+        title.textContent=card.dataset.title;
+        date.textContent="📅 "+card.dataset.date;
+        desc.textContent=card.dataset.desc;
+        img.src=card.dataset.img;
+        link.href=card.dataset.link;
+        modal.style.display="flex";
+    });
+});
+document.querySelector(".close").onclick=()=>modal.style.display="none";
+modal.onclick=e=>{if(e.target===modal)modal.style.display="none";}
 </script>
 
 </body>
