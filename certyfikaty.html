@@ -6,171 +6,166 @@
 <title>Certyfikaty</title>
 
 <style>
-:root {
-    --bg:#ffffff;
-    --txt:#111;
-    --sub:#555;
-    --card:#f4f4f4;
-    --glow:#d1d1d1;
-    --tag:#eaeaea;
+:root{
+  --bg:#ffffff;
+  --txt:#111;
+  --sub:#555;
+  --card:#f4f4f4;
+  --glow:#d1d1d1;
+  --tag:#eaeaea;
 }
-body.dark {
-    --bg:#0d0d0d;
-    --txt:#eaeaea;
-    --sub:#bfbfbf;
-    --card:#151515;
-    --glow:#333;
-    --tag:#222;
+body.dark{
+  --bg:#0d0d0d;
+  --txt:#eaeaea;
+  --sub:#bfbfbf;
+  --card:#151515;
+  --glow:#333;
+  --tag:#222;
 }
+*{box-sizing:border-box}
 body{
-    margin:0;background:var(--bg);color:var(--txt);
-    font-family:"Inter",sans-serif;transition:.35s;
+  margin:0;
+  background:var(--bg);
+  color:var(--txt);
+  font-family:"Inter",sans-serif;
+  transition:.35s;
 }
 
 /* NAV */
 nav{
-    text-align:center;padding:30px 0;
-    letter-spacing:1px;font-size:15px;
+  text-align:center;
+  padding:30px 0;
+  font-size:15px;
 }
 nav a{
-    margin:0 15px;text-decoration:none;color:var(--txt);
-    opacity:.6;transition:.3s;
+  margin:0 15px;
+  text-decoration:none;
+  color:var(--txt);
+  opacity:.6;
+  transition:.3s;
 }
-nav a:hover{opacity:1;}
+nav a:hover{opacity:1}
 
-/* Toggle */
+/* TOGGLE */
 .toggle{
-    position:fixed;top:25px;right:25px;cursor:pointer;
-    background:none;border:1px solid var(--txt);
-    padding:6px 14px;font-size:14px;border-radius:20px;
-    opacity:.75;transition:.3s;
+  position:fixed;
+  top:25px;
+  right:25px;
+  border:1px solid var(--txt);
+  background:none;
+  color:var(--txt);
+  padding:6px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  opacity:.75;
 }
-.toggle:hover{opacity:1;transform:scale(1.05);}
+.toggle:hover{opacity:1}
 
 /* MAIN */
 main{
-    max-width:1000px;margin:40px auto;
-    padding:0 25px;text-align:center;
-    animation:fade .7s ease;
+  max-width:1000px;
+  margin:40px auto;
+  padding:0 25px;
+  text-align:center;
 }
 h1{
-    font-size:42px;font-weight:300;
-    letter-spacing:2px;margin-bottom:45px;
-    animation:float 3s infinite alternate ease-in-out;
+  font-size:42px;
+  font-weight:300;
+  margin-bottom:45px;
 }
 
+/* GRID */
 .grid{
-    display:grid;gap:30px;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
 
+/* CARD */
 .card{
-    background:var(--card);
-    border-radius:16px;padding:28px;
-    transition:.45s;cursor:pointer;
-    opacity:0;transform:translateY(25px);
-    animation:slideUp .9s ease forwards;
+  background:var(--card);
+  border-radius:16px;
+  padding:28px;
+  cursor:pointer;
+  transition:.35s;
 }
-.card:nth-child(2){animation-delay:.15s;}
-.card:nth-child(3){animation-delay:.3s;}
-
 .card:hover{
-    transform:translateY(-8px) scale(1.03);
-    box-shadow:0 12px 30px rgba(0,0,0,.18);
-    border:1px solid var(--glow);
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
 }
+.card h3{margin:0;font-weight:400}
+.card p{margin-top:10px;color:var(--sub)}
 
-.card h3{
-    margin:0;font-weight:400;font-size:22px;
-}
-.card p{
-    font-size:15px;color:var(--sub);
-    margin-top:10px;
-}
-
-/* TAGI */
-.tags{
-    margin-top:15px;
-}
+/* TAGS */
+.tags{margin-top:15px}
 .tag{
-    display:inline-block;
-    background:var(--tag);
-    padding:5px 12px;
-    border-radius:14px;
-    font-size:12px;
-    margin:4px;
-    opacity:.85;
+  display:inline-block;
+  background:var(--tag);
+  padding:5px 12px;
+  border-radius:14px;
+  font-size:12px;
+  margin:4px;
 }
 
 /* MODAL */
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.65);
+  background:rgba(0,0,0,.7);
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   opacity:0;
   pointer-events:none;
   transition:.3s;
+  z-index:1000;
 }
-
 .modal.open{
   opacity:1;
   pointer-events:auto;
 }
-
 .modal-content{
   background:var(--card);
   padding:25px;
   border-radius:18px;
-  max-width:420px;
-  width:90%;
+  max-width:90vw;
+  max-height:90vh;
   text-align:center;
 }
-
 .modal-content img{
   width:100%;
+  max-height:70vh;
+  object-fit:contain;
   border-radius:12px;
   margin-bottom:15px;
 }
-
-.modal-content a{
-  display:inline-block;
+.modal-content button{
   margin-top:15px;
+  padding:6px 16px;
+  border-radius:16px;
+  border:none;
+  cursor:pointer;
 }
 
-/* Animacje */
-@keyframes fade{from{opacity:0;}to{opacity:1;}}
-@keyframes slideUp{to{opacity:1;transform:translateY(0);}}
-@keyframes float{from{transform:translateY(0);}to{transform:translateY(-10px);}}
-
-/* Footer */
-footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
+/* FOOTER */
+footer{
+  text-align:center;
+  opacity:.5;
+  margin:60px 0;
+}
 </style>
 </head>
-
-<div id="modal" class="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <img id="modalImg">
-    <h2 id="modalTitle"></h2>
-    <p id="modalDate"></p>
-    <p id="modalDesc"></p>
-    <a id="modalLink" target="_blank">🔗 Verify certificate</a>
-    <button onclick="closeModal()">Close</button>
-  </div>
-</div>
 
 <body>
 
 <button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
 
 <nav>
-    <a href="index.html">STRONA GŁÓWNA</a>
-    <a href="o-mnie.html">O MNIE</a>
-    <a href="wyksztalcenie.html">WYKSZTAŁCENIE</a>
-    <a href="certyfikaty.html" style="opacity:1;">CERTYFIKATY</a>
-    <a href="projekty.html">PROJEKTY</a>
+  <a href="index.html">STRONA GŁÓWNA</a>
+  <a href="o-mnie.html">O MNIE</a>
+  <a href="wyksztalcenie.html">WYKSZTAŁCENIE</a>
+  <a href="certyfikaty.html" style="opacity:1">CERTYFIKATY</a>
+  <a href="projekty.html">PROJEKTY</a>
 </nav>
 
 <main>
@@ -181,30 +176,28 @@ footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
 <div class="card"
 data-title="Python Data Associate"
 data-date="July 2025"
-data-desc="Certificate confirming skills in using Python to handle data and use it to answer common analysis questions. Includes Data Management and Exploratory Analysis."
+data-desc="Certificate confirming skills in using Python for data analysis."
 data-img="assets/PDA.jpeg"
 data-link="https://www.datacamp.com/certificate/PDA0015551681659">
-
-
-    <h3>🎓 Python Data Associate</h3>
-    <p>Datacamp · 2025</p>
-    <div class="tags">
-        <span class="tag">PYTHON</span>
-        <span class="tag">DATA ANALYSIS</span>
-    </div>
+  <h3>🎓 Python Data Associate</h3>
+  <p>Datacamp · 2025</p>
+  <div class="tags">
+    <span class="tag">PYTHON</span>
+    <span class="tag">DATA ANALYSIS</span>
+  </div>
 </div>
 
 <div class="card"
 data-title="SQL for Data Analysis"
 data-date="January 2024"
-data-desc="Advanced SQL queries, joins, CTEs and analytical functions for business reporting."
+data-desc="Advanced SQL queries, joins, CTEs and analytical functions."
 data-img="assets/sql_certificate.jpeg"
 data-link="https://www.udemy.com/certificate/XYZ456">
-    <h3>🏅 SQL for Data Analysis</h3>
-    <p>Udemy · 2024</p>
-    <div class="tags">
-        <span class="tag">SQL</span>
-    </div>
+  <h3>🏅 SQL for Data Analysis</h3>
+  <p>Udemy · 2024</p>
+  <div class="tags">
+    <span class="tag">SQL</span>
+  </div>
 </div>
 
 </div>
@@ -213,69 +206,40 @@ data-link="https://www.udemy.com/certificate/XYZ456">
 <footer>© 2025 Daria</footer>
 
 <!-- MODAL -->
-<div id="modal" class="modal">
-<div class="modal-content">
-    <span class="close">&times;</span>
-    <h2 id="modal-title"></h2>
-    <p id="modal-date"></p>
-    <img id="modal-img">
-    <p id="modal-desc"></p>
-    <a id="modal-link" target="_blank">Verify certificate ↗</a>
-</div>
+<div id="modal" class="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <img id="modalImg">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDate"></p>
+    <p id="modalDesc"></p>
+    <a id="modalLink" target="_blank">🔗 Verify certificate</a><br>
+    <button onclick="closeModal()">Close</button>
+  </div>
 </div>
 
 <script>
 const body=document.body;
-if(localStorage.getItem("theme")==="dark")body.classList.add("dark");
+if(localStorage.getItem("theme")==="dark") body.classList.add("dark");
 function toggleTheme(){
-    body.classList.toggle("dark");
-    localStorage.setItem("theme",body.classList.contains("dark")?"dark":"light");
+  body.classList.toggle("dark");
+  localStorage.setItem("theme",body.classList.contains("dark")?"dark":"light");
 }
-
-const modal=document.getElementById("modal");
-const title=document.getElementById("modal-title");
-const date=document.getElementById("modal-date");
-const desc=document.getElementById("modal-desc");
-const img=document.getElementById("modal-img");
-const link=document.getElementById("modal-link");
 
 document.querySelectorAll(".card").forEach(card=>{
-    card.addEventListener("click",()=>{
-        title.textContent=card.dataset.title;
-        date.textContent="📅 "+card.dataset.date;
-        desc.textContent=card.dataset.desc;
-        img.src=card.dataset.img;
-        link.href=card.dataset.link;
-        modal.style.display="flex";
-    });
-});
-document.querySelector(".close").onclick=()=>modal.style.display="none";
-modal.onclick=e=>{if(e.target===modal)modal.style.display="none";}
-</script>
-<script>
-const cards = document.querySelectorAll(".card");
-
-cards.forEach(card => {
-  card.addEventListener("click", () => {
-    const title = card.dataset.title;
-    const date = card.dataset.date;
-    const desc = card.dataset.desc;
-    const img = card.dataset.img;
-    const link = card.dataset.link;
-
-    document.getElementById("modalTitle").innerText = title;
-    document.getElementById("modalDate").innerText = date;
-    document.getElementById("modalDesc").innerText = desc;
-    document.getElementById("modalImg").src = img;
-    document.getElementById("modalLink").href = link;
-
-    document.getElementById("modal").classList.add("open");
+  card.addEventListener("click",()=>{
+    modal.classList.add("open");
+    modalImg.src=card.dataset.img;
+    modalTitle.innerText=card.dataset.title;
+    modalDate.innerText="📅 "+card.dataset.date;
+    modalDesc.innerText=card.dataset.desc;
+    modalLink.href=card.dataset.link;
   });
 });
-
 function closeModal(){
-  document.getElementById("modal").classList.remove("open");
+  modal.classList.remove("open");
 }
 </script>
+
 </body>
 </html>
+
