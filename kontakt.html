@@ -30,13 +30,16 @@ body{
     transition:.35s;
 }
 
-/* ===== NAV – POPRAWNIE ===== */
+/* ===== NAV ===== */
 nav{
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:30px 40px;
     font-size:15px;
+}
+.nav-spacer{
+    width:120px;
 }
 .nav-links{
     flex:1;
@@ -51,7 +54,7 @@ nav{
 }
 .nav-links a:hover{opacity:1;}
 
-/* TOGGLE – WRESZCIE TAM GDZIE TRZEBA */
+/* ===== TOGGLE ===== */
 .toggle{
     background:var(--btn);
     border:1px solid var(--line);
@@ -105,7 +108,10 @@ h1{
     font-size:15px;
     margin-bottom:20px;
 }
-.card a{
+
+/* ===== BUTTONS ===== */
+.card a,
+.reveal-btn{
     display:inline-block;
     padding:10px 22px;
     border-radius:25px;
@@ -113,13 +119,24 @@ h1{
     color:var(--bg);
     text-decoration:none;
     font-size:14px;
+    cursor:pointer;
+    border:none;
     transition:.3s;
 }
-.card a:hover{
+.card a:hover,
+.reveal-btn:hover{
     opacity:.85;
 }
 
-/* FOOTER */
+/* ===== EMAIL REVEAL ===== */
+.email{
+    display:none;
+    margin-top:16px;
+    font-size:16px;
+    letter-spacing:.4px;
+}
+
+/* ===== FOOTER ===== */
 footer{
     text-align:center;
     opacity:.5;
@@ -132,7 +149,7 @@ footer{
 <body>
 
 <nav>
-    <div></div>
+    <div class="nav-spacer"></div>
 
     <div class="nav-links">
         <a href="index.html">STRONA GŁÓWNA</a>
@@ -143,7 +160,7 @@ footer{
         <a href="kontakt.html" style="opacity:1;">KONTAKT</a>
     </div>
 
-<button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
+    <button class="toggle" onclick="toggleTheme()">☀️ / 🌙</button>
 </nav>
 
 <main>
@@ -157,7 +174,10 @@ Jestem otwarta na współpracę, projekty oraz rozmowy rekrutacyjne.
 <div class="card">
 <h3>📧 Email</h3>
 <p>Najszybszy sposób kontaktu</p>
-<a href="mailto:daria@gmail.com">Napisz maila</a>
+<button class="reveal-btn" onclick="revealEmail(this)">
+Pokaż adres
+</button>
+<span class="email">daria@gmail.com</span>
 </div>
 
 <div class="card">
@@ -182,12 +202,19 @@ const body = document.body;
 if(localStorage.getItem("theme")==="dark"){
     body.classList.add("dark");
 }
+
 function toggleTheme(){
     body.classList.toggle("dark");
     localStorage.setItem(
         "theme",
-        body.classList.contains("dark")?"dark":"light"
+        body.classList.contains("dark") ? "dark" : "light"
     );
+}
+
+function revealEmail(btn){
+    const email = btn.nextElementSibling;
+    email.style.display = "block";
+    btn.style.display = "none";
 }
 </script>
 
