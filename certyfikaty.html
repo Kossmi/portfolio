@@ -115,38 +115,30 @@ h1{
   transition:.3s;
 }
 
+.modal.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
 .modal-content{
-    background:var(--bg);
-    color:var(--txt);
-    max-width:650px;
-    width:90%;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-    position:relative;
-    animation:fade .3s ease;
+  background:var(--card);
+  padding:25px;
+  border-radius:18px;
+  max-width:420px;
+  width:90%;
+  text-align:center;
 }
+
 .modal-content img{
-    max-width:100%;
-    border-radius:12px;
-    margin:20px 0;
+  width:100%;
+  border-radius:12px;
+  margin-bottom:15px;
 }
-.modal a{
-    display:inline-block;
-    margin-top:15px;
-    text-decoration:none;
-    color:var(--txt);
-    border-bottom:1px solid var(--txt);
-    opacity:.7;
+
+.modal-content a{
+  display:inline-block;
+  margin-top:15px;
 }
-.modal a:hover{opacity:1;}
-.close{
-    position:absolute;
-    top:18px;right:25px;
-    font-size:26px;cursor:pointer;
-    opacity:.6;
-}
-.close:hover{opacity:1;}
 
 /* Animacje */
 @keyframes fade{from{opacity:0;}to{opacity:1;}}
@@ -192,7 +184,6 @@ data-date="July 2025"
 data-desc="Certificate confirming skills in using Python to handle data and use it to answer common analysis questions. Includes Data Management and Exploratory Analysis."
 data-img="assets/PDA.jpeg"
 data-link="https://www.datacamp.com/certificate/PDA0015551681659">
-
 
 
     <h3>🎓 Python Data Associate</h3>
