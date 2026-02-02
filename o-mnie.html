@@ -31,7 +31,7 @@ body{
   transition:.35s;
 }
 
-/* NAV BACK */
+/* BACK */
 .back{
   position:fixed;
   top:25px;
@@ -45,7 +45,29 @@ body{
   opacity:.75;
   transition:.3s;
 }
-.back:hover{opacity:1;transform:scale(1.05)}
+.back:hover{
+  opacity:1;
+  transform:scale(1.05);
+}
+
+/* TOGGLE */
+.toggle{
+  position:fixed;
+  top:25px;
+  right:25px;
+  border:1px solid var(--txt);
+  background:none;
+  color:var(--txt);
+  padding:6px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  opacity:.75;
+  transition:.3s;
+}
+.toggle:hover{
+  opacity:1;
+  transform:scale(1.05);
+}
 
 /* MAIN */
 main{
@@ -123,7 +145,10 @@ p{
     text-align:center;
     padding:40px 30px;
   }
-  .photo img{width:200px;height:200px}
+  .photo img{
+    width:200px;
+    height:200px;
+  }
 }
 </style>
 </head>
@@ -131,7 +156,6 @@ p{
 <body>
 
 <button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
-
 <a href="index.html" class="back">← Powrót</a>
 
 <main>
@@ -163,5 +187,23 @@ p{
   </div>
 </main>
 
+<script>
+const body = document.body;
+
+// zapamiętywanie motywu
+if(localStorage.getItem("theme")==="dark"){
+  body.classList.add("dark");
+}
+
+function toggleTheme(){
+  body.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+</script>
+
 </body>
 </html>
+
