@@ -6,13 +6,13 @@
 <title>Wykształcenie</title>
 
 <style>
-/* ===== MOTYW LIGHT / DARK ===== */
 :root{
     --bg:#ffffff;
     --txt:#111;
     --sub:#666;
     --line:#dcdcdc;
     --card:#f7f7f7;
+    --btn:#eaeaea;
 }
 body.dark{
     --bg:#0c0c0c;
@@ -20,13 +20,14 @@ body.dark{
     --sub:#aaa;
     --line:#333;
     --card:#151515;
+    --btn:#222;
 }
 body{
     margin:0;background:var(--bg);color:var(--txt);
     font-family:"Inter",sans-serif;transition:.35s;
 }
 
-/* ===== NAV ===== */
+/* NAV */
 nav{text-align:center;padding:30px 0;font-size:15px;letter-spacing:.5px;}
 nav a{
     margin:0 15px;text-decoration:none;color:var(--txt);
@@ -34,76 +35,79 @@ nav a{
 }
 nav a:hover{opacity:1;}
 
-/* ===== TOGGLE DARK ===== */
+/* TOGGLE */
 .toggle{
     position:fixed;top:25px;right:25px;
-    background:none;border:1px solid var(--txt);
-    padding:6px 14px;border-radius:20px;
-    cursor:pointer;font-size:14px;opacity:.75;transition:.3s;
+    background:var(--btn);border:1px solid var(--line);
+    padding:8px 16px;border-radius:20px;
+    cursor:pointer;font-size:14px;transition:.3s;
 }
-.toggle:hover{opacity:1;transform:scale(1.05);}
+.toggle:hover{transform:scale(1.05);}
 
-/* ===== SEKCJA WYKSZTAŁCENIE ===== */
+/* MAIN */
 main{
     max-width:1000px;margin:40px auto;padding:0 25px;text-align:center;
     animation:fade .7s ease;
 }
 h1{
     font-size:42px;font-weight:300;letter-spacing:2px;
-    margin-bottom:60px;animation:float 3s infinite alternate ease-in-out;
+    margin-bottom:60px;
 }
 
-/* ===== TIMELINE – top UI 🔥 ===== */
-.timeline{
-    position:relative;margin-top:40px;padding-left:30px;
-}
+/* TIMELINE */
+.timeline{position:relative;padding-left:30px;}
 .timeline:before{
     content:"";position:absolute;left:20px;top:0;bottom:0;
-    width:3px;background:var(--line);border-radius:10px;
+    width:3px;background:var(--line);
 }
 
-/* ===== ELEMENTY EDUKACJI ===== */
+/* ITEM */
 .item{
     position:relative;margin:50px 0;
     background:var(--card);padding:28px 30px;border-radius:16px;
     text-align:left;
-    opacity:0;transform:translateY(20px);
-    animation:slideUp .8s forwards;
 }
-.item:nth-child(2){animation-delay:.1s;}
-.item:nth-child(3){animation-delay:.25s;}
-.item:nth-child(4){animation-delay:.4s;}
-
 .item:before{
     content:"";position:absolute;left:-14px;top:25px;
     width:14px;height:14px;background:var(--txt);
-    border-radius:50%;box-shadow:0 0 12px rgba(0,0,0,.25);
+    border-radius:50%;
 }
 
-/* TEKSTY W TIMELINE */
-.item h3{
-    margin:0;margin-bottom:6px;font-size:22px;font-weight:400;
+/* TEKST */
+.item h3{margin:0 0 6px;font-size:22px;}
+.item span{font-size:14px;color:var(--sub);}
+.item p{margin-top:12px;line-height:1.7;color:var(--sub);}
+
+/* KURSY */
+.course-buttons{
+    margin-top:15px;
 }
-.item span{
-    font-size:14px;opacity:.7;color:var(--sub);
+.course-buttons button{
+    margin:6px;
+    padding:8px 16px;
+    border-radius:20px;
+    border:1px solid var(--line);
+    background:var(--btn);
+    cursor:pointer;
+    transition:.3s;
 }
-.item p{
-    margin-top:12px;line-height:1.7;font-size:16px;color:var(--sub);
+.course-buttons button:hover{
+    transform:scale(1.05);
+}
+.course-list{
+    display:none;
+    margin-top:10px;
+    font-size:15px;
 }
 
-/* ANIMACJE */
-@keyframes fade{from{opacity:0;}to{opacity:1;}}
-@keyframes slideUp{to{opacity:1;transform:translateY(0);}}
-@keyframes float{from{transform:translateY(0);}to{transform:translateY(-10px);}}
-
-/* STOPKA */
+/* FOOTER */
 footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
 </style>
 </head>
 
 <body>
 
-<button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
+<button class="toggle" onclick="toggleTheme()">☀️ / 🌙</button>
 
 <nav>
     <a href="index.html">STRONA GŁÓWNA</a>
@@ -111,33 +115,55 @@ footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
     <a href="wyksztalcenie.html" style="opacity:1;">WYKSZTAŁCENIE</a>
     <a href="certyfikaty.html">CERTYFIKATY</a>
     <a href="projekty.html">PROJEKTY</a>
+    <a href="kontakt.html">KONTAKT</a>
 </nav>
 
 <main>
-    <h1>Wykształcenie</h1>
+<h1>Wykształcenie</h1>
 
-    <div class="timeline">
+<div class="timeline">
 
-        <div class="item">
-            <h3>🎓 Studia Podyplomowe – Data Science w Medycynie</h3>
-            <span>Uniwersytet Medyczny im. Karola Marcinkowskiego w Poznaniu • 02-2023 – 09-2024</span>
-            <p>Kierunek łączący analizę danych, statystykę i uczenie maszynowe z zastosowaniami w medycynie i naukach biologicznych.</p>
-        </div>
+<div class="item">
+<h3>🎓 Studia Podyplomowe – Data Science w Medycynie</h3>
+<span>Uniwersytet Medyczny w Poznaniu • 2023–2024</span>
+<p>Analiza danych, statystyka i ML w zastosowaniach medycznych.</p>
+</div>
 
-        <div class="item">
-            <h3>🎓 Studia Magisterskie – Farmacja</h3>
-            <span>Uniwersytet Medyczny im. Karola Marcinkowskiego w Poznaniu  • 2015 – 2021</span>
-            <p>Kierunek rozwijający analityczne myślenie, dokładność oraz umiejętność pracy z danymi i ludźmi.</p>
-        </div>
+<div class="item">
+<h3>🎓 Studia Magisterskie – Farmacja</h3>
+<span>Uniwersytet Medyczny w Poznaniu • 2015–2021</span>
+<p>Analityczne myślenie, praca z danymi i odpowiedzialność.</p>
+</div>
 
+<div class="item">
+<h3>📌 Kursy & szkolenia – DataCamp</h3>
 
-        <div class="item">
-            <h3>📌 Kursy & szkolenia dodatkowe</h3>
-            <span>Online | Datacamp</span>
-            <p></p>
-        </div>
+<div class="course-buttons">
+<button onclick="toggleCourses('python')">🐍 Python</button>
+<button onclick="toggleCourses('sql')">🗄 SQL</button>
+<button onclick="toggleCourses('ml')">🤖 Machine Learning</button>
+</div>
 
-    </div>
+<div id="python" class="course-list">
+• Python Fundamentals<br>
+• Pandas & NumPy<br>
+• Data Visualization
+</div>
+
+<div id="sql" class="course-list">
+• SQL Basics<br>
+• Joining Tables<br>
+• PostgreSQL
+</div>
+
+<div id="ml" class="course-list">
+• Supervised Learning<br>
+• Model Evaluation<br>
+• Scikit-learn
+</div>
+
+</div>
+</div>
 </main>
 
 <footer>© 2025 Daria Kośmicka</footer>
@@ -145,9 +171,21 @@ footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
 <script>
 const body=document.body;
 if(localStorage.getItem("theme")==="dark") body.classList.add("dark");
+
 function toggleTheme(){
     body.classList.toggle("dark");
-    localStorage.setItem("theme",body.classList.contains("dark")?"dark":"light");
+    localStorage.setItem("theme",
+        body.classList.contains("dark")?"dark":"light");
+}
+
+function toggleCourses(id){
+    document.querySelectorAll('.course-list').forEach(el=>{
+        if(el.id===id){
+            el.style.display = el.style.display==="block"?"none":"block";
+        } else {
+            el.style.display="none";
+        }
+    });
 }
 </script>
 
