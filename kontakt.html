@@ -23,33 +23,55 @@ body.dark{
     --btn:#222;
 }
 body{
-    margin:0;background:var(--bg);color:var(--txt);
-    font-family:"Inter",sans-serif;transition:.35s;
+    margin:0;
+    background:var(--bg);
+    color:var(--txt);
+    font-family:"Inter",sans-serif;
+    transition:.35s;
 }
 
 /* NAV */
-nav{text-align:center;padding:30px 0;font-size:15px;}
+nav{
+    text-align:center;
+    padding:30px 0;
+    font-size:15px;
+}
 nav a{
-    margin:0 15px;text-decoration:none;color:var(--txt);
-    opacity:.6;transition:.3s;
+    margin:0 15px;
+    text-decoration:none;
+    color:var(--txt);
+    opacity:.6;
+    transition:.3s;
 }
 nav a:hover{opacity:1;}
 
-/* TOGGLE */
+/* TOGGLE – FIXED */
 .toggle{
-    position:fixed;top:25px;right:25px;
-    background:var(--btn);border:1px solid var(--line);
-    padding:8px 16px;border-radius:20px;
-    cursor:pointer;font-size:14px;
+    position:fixed;
+    top:25px;
+    right:25px;
+    z-index:9999;
+    background:var(--btn);
+    border:1px solid var(--line);
+    padding:8px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
 }
+.toggle:hover{transform:scale(1.05);}
 
 /* MAIN */
 main{
-    max-width:600px;margin:60px auto;padding:0 25px;
+    max-width:600px;
+    margin:60px auto;
+    padding:0 25px;
     text-align:center;
 }
 h1{
-    font-size:40px;font-weight:300;margin-bottom:40px;
+    font-size:40px;
+    font-weight:300;
+    margin-bottom:40px;
 }
 
 /* FORM */
@@ -75,7 +97,10 @@ input, textarea{
     color:var(--txt);
     font-size:15px;
 }
-textarea{resize:none;height:120px;}
+textarea{
+    resize:none;
+    height:120px;
+}
 
 button{
     width:100%;
@@ -90,8 +115,37 @@ button{
 }
 button:hover{transform:scale(1.03);}
 
+/* SUCCESS MESSAGE */
+.success{
+    display:none;
+    background:var(--card);
+    padding:30px;
+    border-radius:20px;
+    margin-top:30px;
+    animation:fade .6s ease;
+}
+.success h2{
+    font-weight:400;
+    margin-bottom:10px;
+}
+.success p{
+    color:var(--sub);
+    font-size:15px;
+}
+
+/* ANIM */
+@keyframes fade{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
 /* FOOTER */
-footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
+footer{
+    text-align:center;
+    opacity:.5;
+    margin:60px 0;
+    font-size:14px;
+}
 </style>
 </head>
 
@@ -111,31 +165,63 @@ footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
 <main>
 <h1>Kontakt</h1>
 
-<form action="mailto:daria@gmail.com" method="post" enctype="text/plain">
+<form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
     <label>Imię</label>
-    <input type="text" name="Imię" required>
+    <input type="text" name="name" required>
 
     <label>Email</label>
-    <input type="email" name="Email" required>
+    <input type="email" name="email" required>
 
     <label>Wiadomość</label>
-    <textarea name="Wiadomość" required></textarea>
+    <textarea name="message" required></textarea>
 
     <button type="submit">Wyślij wiadomość</button>
 </form>
+
+<div class="success" id="successMessage">
+    <h2>✅ Wiadomość wysłana</h2>
+    <p>Dziękuję za kontakt! Odpowiem najszybciej jak to możliwe.</p>
+</div>
+
 </main>
 
 <footer>© 2025 Daria Kośmicka</footer>
 
 <script>
 const body=document.body;
-if(localStorage.getItem("theme")==="dark") body.classList.add("dark");
+if(localStorage.getItem("theme")==="dark"){
+    body.classList.add("dark");
+}
 
 function toggleTheme(){
     body.classList.toggle("dark");
-    localStorage.setItem("theme",
-        body.classList.contains("dark")?"dark":"light");
+    localStorage.setItem(
+        "theme",
+        body.classList.contains("dark")?"dark":"light"
+    );
 }
+
+/* FORM HANDLER */
+const form = document.getElementById("contactForm");
+const success = document.getElementById("successMessage");
+
+form.addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    });
+
+    if(response.ok){
+        form.reset();
+        form.style.display="none";
+        success.style.display="block";
+    } else {
+        alert("Coś poszło nie tak. Spróbuj ponownie później.");
+    }
+});
 </script>
 
 </body>
