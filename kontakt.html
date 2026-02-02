@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt</title>
+
+<style>
+:root{
+    --bg:#ffffff;
+    --txt:#111;
+    --sub:#666;
+    --line:#dcdcdc;
+    --card:#f7f7f7;
+    --btn:#eaeaea;
+}
+body.dark{
+    --bg:#0c0c0c;
+    --txt:#e4e4e4;
+    --sub:#aaa;
+    --line:#333;
+    --card:#151515;
+    --btn:#222;
+}
+body{
+    margin:0;background:var(--bg);color:var(--txt);
+    font-family:"Inter",sans-serif;transition:.35s;
+}
+
+/* NAV */
+nav{text-align:center;padding:30px 0;font-size:15px;}
+nav a{
+    margin:0 15px;text-decoration:none;color:var(--txt);
+    opacity:.6;transition:.3s;
+}
+nav a:hover{opacity:1;}
+
+/* TOGGLE */
+.toggle{
+    position:fixed;top:25px;right:25px;
+    background:var(--btn);border:1px solid var(--line);
+    padding:8px 16px;border-radius:20px;
+    cursor:pointer;font-size:14px;
+}
+
+/* MAIN */
+main{
+    max-width:600px;margin:60px auto;padding:0 25px;
+    text-align:center;
+}
+h1{
+    font-size:40px;font-weight:300;margin-bottom:40px;
+}
+
+/* FORM */
+form{
+    background:var(--card);
+    padding:35px;
+    border-radius:20px;
+    text-align:left;
+}
+label{
+    display:block;
+    font-size:14px;
+    margin-bottom:6px;
+    opacity:.8;
+}
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:20px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--txt);
+    font-size:15px;
+}
+textarea{resize:none;height:120px;}
+
+button{
+    width:100%;
+    padding:14px;
+    border-radius:25px;
+    border:none;
+    background:var(--txt);
+    color:var(--bg);
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+button:hover{transform:scale(1.03);}
+
+/* FOOTER */
+footer{text-align:center;opacity:.5;margin:60px 0;font-size:14px;}
+</style>
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleTheme()">☀️ / 🌙</button>
+
+<nav>
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="o-mnie.html">O MNIE</a>
+    <a href="wyksztalcenie.html">WYKSZTAŁCENIE</a>
+    <a href="certyfikaty.html">CERTYFIKATY</a>
+    <a href="projekty.html">PROJEKTY</a>
+    <a href="kontakt.html" style="opacity:1;">KONTAKT</a>
+</nav>
+
+<main>
+<h1>Kontakt</h1>
+
+<form action="mailto:daria@gmail.com" method="post" enctype="text/plain">
+    <label>Imię</label>
+    <input type="text" name="Imię" required>
+
+    <label>Email</label>
+    <input type="email" name="Email" required>
+
+    <label>Wiadomość</label>
+    <textarea name="Wiadomość" required></textarea>
+
+    <button type="submit">Wyślij wiadomość</button>
+</form>
+</main>
+
+<footer>© 2025 Daria Kośmicka</footer>
+
+<script>
+const body=document.body;
+if(localStorage.getItem("theme")==="dark") body.classList.add("dark");
+
+function toggleTheme(){
+    body.classList.toggle("dark");
+    localStorage.setItem("theme",
+        body.classList.contains("dark")?"dark":"light");
+}
+</script>
+
+</body>
+</html>
