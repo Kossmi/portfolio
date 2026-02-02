@@ -30,27 +30,29 @@ body{
     transition:.35s;
 }
 
-/* NAV */
+/* ===== NAV – POPRAWNIE ===== */
 nav{
-    text-align:center;
-    padding:30px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:30px 40px;
     font-size:15px;
 }
-nav a{
+.nav-links{
+    flex:1;
+    text-align:center;
+}
+.nav-links a{
     margin:0 15px;
     text-decoration:none;
     color:var(--txt);
     opacity:.6;
     transition:.3s;
 }
-nav a:hover{opacity:1;}
+.nav-links a:hover{opacity:1;}
 
-/* TOGGLE – FIXED */
+/* TOGGLE – WRESZCIE TAM GDZIE TRZEBA */
 .toggle{
-    position:fixed;
-    top:25px;
-    right:25px;
-    z-index:9999;
     background:var(--btn);
     border:1px solid var(--line);
     padding:8px 16px;
@@ -61,89 +63,67 @@ nav a:hover{opacity:1;}
 }
 .toggle:hover{transform:scale(1.05);}
 
-/* MAIN */
+/* ===== MAIN ===== */
 main{
-    max-width:600px;
-    margin:60px auto;
+    max-width:800px;
+    margin:80px auto;
     padding:0 25px;
     text-align:center;
 }
 h1{
-    font-size:40px;
+    font-size:42px;
     font-weight:300;
-    margin-bottom:40px;
+    margin-bottom:20px;
+}
+.subtitle{
+    color:var(--sub);
+    font-size:17px;
+    margin-bottom:60px;
 }
 
-/* FORM */
-form{
+/* ===== CONTACT CARDS ===== */
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+.card{
     background:var(--card);
     padding:35px;
-    border-radius:20px;
-    text-align:left;
-}
-label{
-    display:block;
-    font-size:14px;
-    margin-bottom:6px;
-    opacity:.8;
-}
-input, textarea{
-    width:100%;
-    padding:12px;
-    margin-bottom:20px;
-    border-radius:12px;
-    border:1px solid var(--line);
-    background:transparent;
-    color:var(--txt);
-    font-size:15px;
-}
-textarea{
-    resize:none;
-    height:120px;
-}
-
-button{
-    width:100%;
-    padding:14px;
-    border-radius:25px;
-    border:none;
-    background:var(--txt);
-    color:var(--bg);
-    font-size:15px;
-    cursor:pointer;
+    border-radius:22px;
     transition:.3s;
 }
-button:hover{transform:scale(1.03);}
-
-/* SUCCESS MESSAGE */
-.success{
-    display:none;
-    background:var(--card);
-    padding:30px;
-    border-radius:20px;
-    margin-top:30px;
-    animation:fade .6s ease;
+.card:hover{
+    transform:translateY(-6px);
 }
-.success h2{
-    font-weight:400;
+.card h3{
     margin-bottom:10px;
+    font-weight:400;
 }
-.success p{
+.card p{
     color:var(--sub);
     font-size:15px;
+    margin-bottom:20px;
 }
-
-/* ANIM */
-@keyframes fade{
-    from{opacity:0;transform:translateY(10px);}
-    to{opacity:1;transform:translateY(0);}
+.card a{
+    display:inline-block;
+    padding:10px 22px;
+    border-radius:25px;
+    background:var(--txt);
+    color:var(--bg);
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+.card a:hover{
+    opacity:.85;
 }
 
 /* FOOTER */
 footer{
     text-align:center;
     opacity:.5;
-    margin:60px 0;
+    margin:80px 0 40px;
     font-size:14px;
 }
 </style>
@@ -151,48 +131,57 @@ footer{
 
 <body>
 
-<button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
-
 <nav>
-    <a href="index.html">STRONA GŁÓWNA</a>
-    <a href="o-mnie.html">O MNIE</a>
-    <a href="wyksztalcenie.html">WYKSZTAŁCENIE</a>
-    <a href="certyfikaty.html">CERTYFIKATY</a>
-    <a href="projekty.html">PROJEKTY</a>
-    <a href="kontakt.html" style="opacity:1;">KONTAKT</a>
+    <div></div>
+
+    <div class="nav-links">
+        <a href="index.html">STRONA GŁÓWNA</a>
+        <a href="o-mnie.html">O MNIE</a>
+        <a href="wyksztalcenie.html">WYKSZTAŁCENIE</a>
+        <a href="certyfikaty.html">CERTYFIKATY</a>
+        <a href="projekty.html">PROJEKTY</a>
+        <a href="kontakt.html" style="opacity:1;">KONTAKT</a>
+    </div>
+
+<button class="toggle" onclick="toggleTheme()">☀ / 🌙</button>
 </nav>
 
 <main>
 <h1>Kontakt</h1>
+<p class="subtitle">
+Jestem otwarta na współpracę, projekty oraz rozmowy rekrutacyjne.
+</p>
 
-<form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <label>Imię</label>
-    <input type="text" name="name" required>
+<div class="contact-grid">
 
-    <label>Email</label>
-    <input type="email" name="email" required>
-
-    <label>Wiadomość</label>
-    <textarea name="message" required></textarea>
-
-    <button type="submit">Wyślij wiadomość</button>
-</form>
-
-<div class="success" id="successMessage">
-    <h2>✅ Wiadomość wysłana</h2>
-    <p>Dziękuję za kontakt! Odpowiem najszybciej jak to możliwe.</p>
+<div class="card">
+<h3>📧 Email</h3>
+<p>Najszybszy sposób kontaktu</p>
+<a href="mailto:daria@gmail.com">Napisz maila</a>
 </div>
 
+<div class="card">
+<h3>💼 LinkedIn</h3>
+<p>Profil zawodowy</p>
+<a href="https://linkedin.com" target="_blank">Zobacz profil</a>
+</div>
+
+<div class="card">
+<h3>💻 GitHub</h3>
+<p>Repozytoria i projekty</p>
+<a href="https://github.com" target="_blank">Przejdź do GitHub</a>
+</div>
+
+</div>
 </main>
 
 <footer>© 2025 Daria Kośmicka</footer>
 
 <script>
-const body=document.body;
+const body = document.body;
 if(localStorage.getItem("theme")==="dark"){
     body.classList.add("dark");
 }
-
 function toggleTheme(){
     body.classList.toggle("dark");
     localStorage.setItem(
@@ -200,28 +189,6 @@ function toggleTheme(){
         body.classList.contains("dark")?"dark":"light"
     );
 }
-
-/* FORM HANDLER */
-const form = document.getElementById("contactForm");
-const success = document.getElementById("successMessage");
-
-form.addEventListener("submit", async function(e){
-    e.preventDefault();
-
-    const response = await fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-    });
-
-    if(response.ok){
-        form.reset();
-        form.style.display="none";
-        success.style.display="block";
-    } else {
-        alert("Coś poszło nie tak. Spróbuj ponownie później.");
-    }
-});
 </script>
 
 </body>
